@@ -21,7 +21,7 @@ function App() {
         <button className='new-game'>New Game</button>
       </div>
       <div className='container'>
-        /* cards will be displayed in here */
+        {/*cards will be displayed in here */}
       </div>
     </div>
   );
