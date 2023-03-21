@@ -51,9 +51,25 @@ body {
 
 /* Container and cards */
 .container{
-  background: red;
-  width: 600px;
-  height: 600px;
   margin-top: 10px;
   margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+
+/* Cards and the images  */
+.card{
+  background-color: white;
+  display: flex;
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-img{
+  width: 190px;
+  height: auto;
 }
