@@ -1,5 +1,7 @@
 import './App.css';
+import './components/Card'; //Card component
 import { useState } from 'react';
+import Card from './components/Card';
 
 //Array of all the card images
 const cardImagesArray = [
@@ -39,7 +41,9 @@ function App() {
       </div>
 
       <div className='container'>
-        {/*cards will be displayed in here */}
+        {cards.map(card =>(
+          <Card key={card.id} card={card} />
+        ))}
       </div>
 
     </div>
