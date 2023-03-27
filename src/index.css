@@ -67,9 +67,10 @@ body {
   border-radius: 10px;
   justify-content: center;
   align-items: center;
+  color: black;
 }
 
-.card-img{
+.card img{
   width: 190px;
-  height: auto;
+
 }
