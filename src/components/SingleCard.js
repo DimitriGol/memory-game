@@ -5,13 +5,25 @@ export default function SingleCard({ card, choiceHandler, flipped}) {
   }
   
   return(
-    <div className='card' onClick={handleClick}>
+    <div className='card'>
+      
+      <div className={flipped ? "flipped" : ""}>
+        {/* Front Image */}
         <img
-          className={flipped ? "flipped" : "card-img"}
+          className="front" 
           src={card.src} 
           alt="card-img"
         />
-      {/* </div> */}
+        {/* Back Image */}
+        <img 
+          className='back' 
+          src="/img/back.png" 
+          alt="back" 
+          onClick={handleClick}
+        />
+
+      </div>
+      
     </div>
   )
 }
