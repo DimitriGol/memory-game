@@ -17,15 +17,15 @@ const cardImagesArray = [
 
 function App() {
   //use state for cards 
-  const [cards, setCards] = useState([...cardImagesArray, ...cardImagesArray]); //sets initial game to empty array
+  const [cards, setCards] = useState([...cardImagesArray, ...cardImagesArray].sort(() => Math.random() - 0.5)); //sets initial game to empty array
   const [turns, setTurns] = useState(0); //sets the number of turns to be 0
-
+  
   // shuffles the cards
   const shuffleCards= () => {
     const shuffledCards = [...cardImagesArray, ...cardImagesArray]
-      .sort(() => Math.random() - 0.5) //random function used to shuffle cards
-      .map((card) => ({...card, id: Math.random()}))
-
+    .sort(() => Math.random() - 0.5) //random function used to shuffle cards
+    .map((card) => ({...card, id: Math.random()}))
+    
     // set state for cards
     setCards(shuffledCards)
     setTurns(0)
