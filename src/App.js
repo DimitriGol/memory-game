@@ -1,6 +1,5 @@
 import './App.css';
 import SingleCard from './components/SingleCard'; //Card component
-// import Cards from './components/Cards'; //Cards component
 import { useState } from 'react';
 import { useEffect } from 'react';
 
@@ -47,26 +46,30 @@ function App() {
   //Compare cards based on choices from user input
   useEffect(() => {
     if (firstChoice && secondChoice) { //runs if both choices are selected
+      
       setDisabled(true); //all other cards are true once two choices are made
       
+      
       if (firstChoice.src === secondChoice.src){ //if the src's of both choices are the same
-        //new card array
-        setCards(prevCards => {
-          return prevCards.map(card => {
-            //if the card passed in is equal to either card, set card's matched property to true
-            if (card.src === firstChoice.src){
-              return {...card, matched: true};
-            }
-            else{
-              return card;
-            }
+        if (firstChoice.id !== secondChoice.id){
+          //new card array
+          setCards(prevCards => {
+            return prevCards.map(card => {
+              //if the card passed in is equal to either card, set card's matched property to true
+              if (card.src === firstChoice.src){
+                return {...card, matched: true};
+              }
+              else{
+                return card;
+              }
+            })
           })
-        })
-        resetTurn();
-      }
-      else{
-        setTimeout(() => resetTurn(), 1000);
-      }
+        }
+          resetTurn();
+        }
+        else{
+          setTimeout(() => resetTurn(), 1000);
+        }
     }
 
   }, [firstChoice, secondChoice])
