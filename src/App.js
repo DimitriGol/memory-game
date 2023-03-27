@@ -8,9 +8,9 @@ import { useEffect } from 'react';
 const cardImagesArray = [
   {"src": "/img/binary.png", matched: false},
   {"src": "img/chatgpt.png", matched: false},
-  {"src": "img/error.jpg", matched: false},
+  {"src": "img/error.png", matched: false},
   {"src": "img/github.png", matched: false},
-  {"src": "img/mips.jpg", matched: false},
+  {"src": "img/mips.png", matched: false},
   {"src": "img/stackoverflow.png", matched: false},
   {"src": "img/tree.png", matched: false},
   {"src": "img/tutorial.png", matched: false}
@@ -60,13 +60,11 @@ function App() {
         resetTurn();
       }
       else{
-        resetTurn();
+        setTimeout(() => resetTurn(), 1000);
       }
     }
 
   }, [firstChoice, secondChoice])
-
-  console.log(cards);
 
   //resets a turn 
   const resetTurn = () => {
