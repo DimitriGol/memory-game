@@ -33,8 +33,10 @@ function App() {
     .map((card) => ({...card, id: Math.random()})) //each card has random id
     
     // set state for cards
-    setCards(shuffledCards)
-    setTurns(0)
+    setFirstChoice(null); //resets the number of choices made after each shuffle
+    setSecondChoice(null);
+    setCards(shuffledCards); 
+    setTurns(0); //resets the number of turns to 0 after each game
   }
 
   // handles choice
@@ -73,9 +75,14 @@ function App() {
   const resetTurn = () => {
     setFirstChoice(null);
     setSecondChoice(null);
-    setTurns(prevTurns => prevTurns+1);
+    setTurns(prevTurns => prevTurns+1); //increments the turns by 1 each reset
     setDisabled(false); //disabled is false after the turn is done
   }
+
+  //starts a game immediately at a refresh 
+  useEffect(() => {
+    shuffleCards();
+  }, [])
 
   return (
     <div className="App">
@@ -84,20 +91,21 @@ function App() {
         <h1 className='title-text'>Comp-Sci Memory Game</h1>
         <p>By Dimitri Golyshev</p>
         <button onClick={shuffleCards} className='new-game'>New Game</button>
+        <p>{turns}</p>
       </div>
 
 
       <div className="container">
-            { cards.map(card =>(
-              <SingleCard 
-                key={card.id}
-                card={card}
-                choiceHandler={choiceHandler}
-                flipped={card.matched || card === firstChoice || card === secondChoice}
-                disabled={disabled}
-              />
-            )) }
-        </div>
+        { cards.map(card =>(
+          <SingleCard 
+            key={card.id}
+            card={card}
+            choiceHandler={choiceHandler}
+            flipped={card.matched || card === firstChoice || card === secondChoice}
+            disabled={disabled}
+          />
+        )) }
+      </div>
 
     </div>
   );

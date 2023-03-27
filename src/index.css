@@ -26,7 +26,7 @@ body {
 .Title p{
   margin-top: 0px;
   margin-bottom: 10px;
-  font-size: 23px;
+  font-size: 30px;
 }
 .new-game{
   margin-top: 10px;
@@ -37,7 +37,7 @@ body {
   border-color: #F5F5F5;
   background: none;
   color: #F5F5F5;
-  font-size: 15px;
+  font-size: 20px;
   transition: 0.1s;
 }
 
