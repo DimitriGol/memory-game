@@ -42,7 +42,17 @@ function App() {
 
   // handles choice
   const choiceHandler = (card) => {
-    firstChoice ? setSecondChoice(card) : setFirstChoice(card);
+    if (firstChoice && firstChoice === card){
+      return;
+    }
+
+    if (firstChoice){
+      setSecondChoice(card);
+      setDisabled(true);
+    }
+    else{
+      setFirstChoice(card);
+    }
   }
 
   //Compare cards based on choices from user input
