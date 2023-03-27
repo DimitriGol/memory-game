@@ -24,6 +24,7 @@ function App() {
   const [secondChoice, setSecondChoice] = useState(null);
   //state for disabled
   const [disabled, setDisabled] = useState(false);
+  const [completed, setCompleted] = useState(false);
 
   // shuffles the cards
   const shuffleCards= () => {
@@ -36,6 +37,7 @@ function App() {
     setSecondChoice(null);
     setCards(shuffledCards); 
     setTurns(0); //resets the number of turns to 0 after each game
+    setCompleted(false); //reset completed case
   }
 
   // handles choice
@@ -71,9 +73,15 @@ function App() {
           setTimeout(() => resetTurn(), 1000);
         }
     }
-
-  }, [firstChoice, secondChoice])
-
+    //alerts the user when the game is completed
+    if (!completed){
+      const completedGame = cards.every(card => card.matched === true);
+      if (completedGame){ //only trigger alert when game is completed and not during initial render
+        setCompleted(true);
+      }
+    }
+    }, [firstChoice, secondChoice, cards, completed])
+    
   //resets a turn 
   const resetTurn = () => {
     setFirstChoice(null);
@@ -97,6 +105,11 @@ function App() {
         <p>{turns}</p>
       </div>
 
+        {completed && (
+        <div className="completed-message">
+          <h2>Game Completed!</h2>
+        </div>
+        )}
 
       <div className="container">
         { cards.map(card =>(
@@ -109,6 +122,8 @@ function App() {
           />
         )) }
       </div>
+
+
 
     </div>
   );
