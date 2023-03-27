@@ -89,3 +89,25 @@ body {
   transform: rotateY(90deg);
   transition-delay: 0s;
 }
+
+.completed-message h2{
+  font-size: 55px;
+  color: rgb(27, 182, 40);
+  margin: 0px;
+}
+
+.completed-message p{
+  color: rgb(65, 65, 65);
+  margin: 0px;
+}
+
+.completed-message{
+  background-color: white;
+  margin: 20px;
+  margin-bottom: 50px;
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+}
