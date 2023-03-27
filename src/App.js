@@ -6,14 +6,14 @@ import { useEffect } from 'react';
 
 
 const cardImagesArray = [
-  {"src": "/img/binary.png"},
-  {"src": "img/chatgpt.png"},
-  {"src": "img/error.jpg"},
-  {"src": "img/github.png"},
-  {"src": "img/mips.jpg"},
-  {"src": "img/stackoverflow.png"},
-  {"src": "img/tree.png"},
-  {"src": "img/tutorial.png"}
+  {"src": "/img/binary.png", matched: false},
+  {"src": "img/chatgpt.png", matched: false},
+  {"src": "img/error.jpg", matched: false},
+  {"src": "img/github.png", matched: false},
+  {"src": "img/mips.jpg", matched: false},
+  {"src": "img/stackoverflow.png", matched: false},
+  {"src": "img/tree.png", matched: false},
+  {"src": "img/tutorial.png", matched: false}
 ]
 
 function App() {
@@ -45,17 +45,27 @@ function App() {
     if (firstChoice && secondChoice) { //runs if both choices are selected
       
       if (firstChoice.src === secondChoice.src){ //if the src's of both choices are the same
-        console.log("Its a match!");
+        //new card array
+        setCards(prevCards => {
+          return prevCards.map(card => {
+            //if the card passed in is equal to either card, set card's matched property to true
+            if (card.src === firstChoice.src){
+              return {...card, matched: true};
+            }
+            else{
+              return card;
+            }
+          })
+        })
         resetTurn();
       }
       else{
-        console.log("Doesn't match!");
         resetTurn();
       }
     }
 
   }, [firstChoice, secondChoice])
-
+  console.log(cards);
   //resets a turn 
   const resetTurn = () => {
     setFirstChoice(null);
