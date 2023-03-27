@@ -59,31 +59,33 @@ body {
 }
 
 /* Cards and the images  */
-.card{
-  background-color: white;
-  display: flex;
-  width: 200px;
-  height: 200px;
-  border-radius: 10px;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  
-  /* Animations for the card object */
-  transform: rotateY(180deg);
-  transition: all ease-in 0.5s;
+.card {
+  position: relative;
 }
-
 
 .card img{
-  width: 190px;
-  /* Animations for the card image */
-  scale: 50%;
-  animation: 1s hideImage linear;
-  transition: transform 0.5s;
+  width: 90%;
+  display: block;
+  border: 2px solid #F5F5F5;
+  border-radius: 10px;
 }
 
-.flipped {
-  scale: 100%;
+.card .front {
+  transform: rotateY(90deg);
+  transition: all ease-in 0.2s;
+  position: absolute
+}
+
+.flipped .front{
   transform: rotateY(0deg);
+  transition-delay: 0.2s;
+}
+
+.card .back{
+  transition: all ease-in 0.2s;
+}
+
+.flipped .back{
+  transform: rotateY(90deg);
+  transition-delay: 0s;
 }
