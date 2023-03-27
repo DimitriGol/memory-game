@@ -6,19 +6,19 @@ import { useEffect } from 'react';
 
 
 const cardImagesArray = [
-  {"src": "/img/binary.png"},
-  {"src": "img/chatgpt.png"},
-  {"src": "img/error.jpg"},
-  {"src": "img/github.png"},
-  {"src": "img/mips.jpg"},
-  {"src": "img/stackoverflow.png"},
-  {"src": "img/tree.png"},
-  {"src": "img/tutorial.png"}
+  {"src": "/img/binary.png", matched: false},
+  {"src": "img/chatgpt.png", matched: false},
+  {"src": "img/error.png", matched: false},
+  {"src": "img/github.png", matched: false},
+  {"src": "img/mips.png", matched: false},
+  {"src": "img/stackoverflow.png", matched: false},
+  {"src": "img/tree.png", matched: false},
+  {"src": "img/tutorial.png", matched: false}
 ]
 
 function App() {
   //use state for cards 
-  const [cards, setCards] = useState([...cardImagesArray, ...cardImagesArray].sort(() => Math.random() - 0.5)); //sets initial game to empty array
+  const [cards, setCards] = useState([]); //sets initial game to empty array
   const [turns, setTurns] = useState(0); //sets the number of turns to be 0
   //state for card choices
   const [firstChoice, setFirstChoice] = useState(null);
@@ -45,12 +45,22 @@ function App() {
     if (firstChoice && secondChoice) { //runs if both choices are selected
       
       if (firstChoice.src === secondChoice.src){ //if the src's of both choices are the same
-        console.log("Its a match!");
+        //new card array
+        setCards(prevCards => {
+          return prevCards.map(card => {
+            //if the card passed in is equal to either card, set card's matched property to true
+            if (card.src === firstChoice.src){
+              return {...card, matched: true};
+            }
+            else{
+              return card;
+            }
+          })
+        })
         resetTurn();
       }
       else{
-        console.log("Doesn't match!");
-        resetTurn();
+        setTimeout(() => resetTurn(), 1000);
       }
     }
 
@@ -76,9 +86,10 @@ function App() {
       <div className="container">
             { cards.map(card =>(
               <SingleCard 
-                key={card.id} 
+                key={card.id}
                 card={card}
                 choiceHandler={choiceHandler}
+                flipped={card.matched || card === firstChoice || card === secondChoice}
               />
             )) }
         </div>
