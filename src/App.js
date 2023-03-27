@@ -5,14 +5,14 @@ import { useEffect } from 'react';
 
 
 const cardImagesArray = [
-  {"src": "/img/binary.png", matched: false},
-  {"src": "img/chatgpt.png", matched: false},
-  {"src": "img/error.png", matched: false},
-  {"src": "img/github.png", matched: false},
-  {"src": "img/mips.png", matched: false},
-  {"src": "img/stackoverflow.png", matched: false},
-  {"src": "img/tree.png", matched: false},
-  {"src": "img/tutorial.png", matched: false}
+  {src: "/img/binary.png", matched: false},
+  {src: "/img/chatgpt.png", matched: false},
+  {src: "/img/error.png", matched: false},
+  {src: "/img/github.png", matched: false},
+  {src: "/img/mips.png", matched: false},
+  {src: "/img/stackoverflow.png", matched: false},
+  {src: "/img/tree.png", matched: false},
+  {src: "/img/tutorial.png", matched: false}
 ]
 
 function App() {
