@@ -18,7 +18,7 @@ const cardImagesArray = [
 
 function App() {
   //use state for cards 
-  const [cards, setCards] = useState([...cardImagesArray, ...cardImagesArray].sort(() => Math.random() - 0.5)); //sets initial game to empty array
+  const [cards, setCards] = useState([]); //sets initial game to empty array
   const [turns, setTurns] = useState(0); //sets the number of turns to be 0
   //state for card choices
   const [firstChoice, setFirstChoice] = useState(null);
@@ -65,7 +65,9 @@ function App() {
     }
 
   }, [firstChoice, secondChoice])
+
   console.log(cards);
+
   //resets a turn 
   const resetTurn = () => {
     setFirstChoice(null);
@@ -86,9 +88,10 @@ function App() {
       <div className="container">
             { cards.map(card =>(
               <SingleCard 
-                key={card.id} 
+                key={card.id}
                 card={card}
                 choiceHandler={choiceHandler}
+                flipped={card.matched || card === firstChoice || card === secondChoice}
               />
             )) }
         </div>
