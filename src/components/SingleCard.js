@@ -1,4 +1,4 @@
-export default function SingleCard({ card, choiceHandler}) {
+export default function SingleCard({ card, choiceHandler, flipped}) {
   
   const handleClick = () => {
     choiceHandler(card)
@@ -6,11 +6,12 @@ export default function SingleCard({ card, choiceHandler}) {
   
   return(
     <div className='card' onClick={handleClick}>
-      <img 
-        className='card-img' 
-        src={card.src} 
-        alt="card-img"
-      />
+        <img
+          className={flipped ? "flipped" : "card-img"}
+          src={card.src} 
+          alt="card-img"
+        />
+      {/* </div> */}
     </div>
   )
 }
